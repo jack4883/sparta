@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빨간뚜껑 팔기</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Gugi&display=swap" rel="stylesheet">
+
+    <!-- jquery -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .wrap {
+            width: 600px;
+            margin: 10px auto 10px auto;
+        }
+
+        .card-title {
+            font-size: 50px;
+            font-weight: bold;
+            font-family: 'Gugi', cursive;
+        }
+
+        .card-text {
+            font-family: 'Gugi', cursive;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Gugi', cursive;
+        }
+
+        .number {
+            color: red;
+            font-style: italic;
+        }
+
+        .button {
+            text-align: center;
+            margin: 10px auto 20px auto;
+        }
+    </style>
+
+    <script>
+        function mobilePhone(p) {
+            var regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+            return regExp.test(p)
+        }
+
+        function order() {
+            let name = $("#inputUsername").val();
+            let count = $("#inputGroupSelect01").val();
+            let add = $("#inputAdd").val();
+            let phoneNum = $("#inputPhone").val();
+
+            if (name == '') {
+                alert('이름을 입력해 주세요')
+                $("#inputUsername").focus()
+                return
+            } else if (count == '') {
+                alert('수량을 입력해 주세요')
+                $("#inputGroupSelect01").focus()
+                return
+            } else if (add == '') {
+                alert('주소를 입력해 주세요')
+                $("#inputAdd").focus()
+                return
+            } else if (phoneNum == '') {
+                alert('전화번호를 입력해 주세요')
+                $("#inputPhone").focus()
+                return
+            } else if (!mobilePhone(phoneNum)) {
+                alert('휴대폰번호 형식이 틀립니다.\n 010-0000-0000으로 입력해주세요');
+            } else {
+                alert('주문이 완료되었습니다')
+            }
+            
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="card">
+            <img class="card-img-top"
+                src="https://i.pinimg.com/originals/40/45/eb/4045eb0f9cc9d15a08606b27e8134d72.jpg">
+            <div class="card-body">
+                <span class="card-title">빨간뚜껑 <span class="price">가격 : <span class="number">10,000원</span>
+                        /개</span></span>
+
+                <p class="card-text">이 빨간 뚜껑은 10년간 판매자가 마셔버린, 콜라의 뚜껑을 한땀한땀 모아서 보관해 놓은 어여쁜 아이다.
+                    아이고 팔기 아까워라 ^^</p>
+
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">주문자 이름</span>
+                </div>
+                <input id="inputUsername" type="text" class="form-control" placeholder="" aria-label="Username"
+                    aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected value=''>Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">주소</span>
+                </div>
+                <input id="inputAdd" type="text" class="form-control" placeholder="" aria-label=""
+                    aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">전화번호</span>
+                </div>
+                <input id="inputPhone" type="text" class="form-control" placeholder="" aria-label=""
+                    aria-describedby="basic-addon1">
+            </div>
+
+            <div class="button">
+                <a href="#" class="btn btn-primary" onclick="order()">주문하기</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
